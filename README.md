@@ -1,3 +1,24 @@
+JSHint - Fluid Project Edition
+==============================
+
+This repository contains the Fluid Project's version of the JSHint JavaScript linting tool.
+
+This version was forked from the main jshint project at its revision [`bf886b8f07124ddfbef158d7269e7b3b184a65fe`](https://github.com/jshint/jshint/commit/bf886b8f07124ddfbef158d7269e7b3b184a65fe)
+of Tue Mar 25 23:01:58 2014 -0700, which occurred shortly after the release of its 2.4.4 version, and before the
+release of its 2.5.0 version. Following that revision, all support for whitespace-based linting was removed
+from jshint.
+
+As well as retaining all features as of that revision, this version of the project includes the following
+extra facilities:
+
+ * When the `trailing:true` option is enabled, all lines containing trailing whitespace are flagged, including those that are otherwise blank or comment lines
+ * A new option `mulopwhite:true` can be enabled, which permits whitespace to be lax around multiplicative operators, allowing constructions like `2*x + 3*y` to be permissible
+ * The `jshint:ignore` directive (as well as all other jshint: directives) now is more permissive in allowing arbitrary material to follow in the comment line after whitespace - 
+this allows one-line `jshint:ignore` comments to be annotated on the same line to provide a human-readable reason for why the ignore directive is there 
+
+The original README file from the JSHint project's forked revision appears below (note that after many years the promised JSHint 3 rewrite has not arrived):
+
+
 JSHint, A Static Code Analysis Tool for JavaScript
 --------------------------------------------------
 

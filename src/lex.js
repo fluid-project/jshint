@@ -441,6 +441,14 @@ Lexer.prototype = {
 
     // One-line comment
     if (ch2 === "/") {
+      var trailWhite = /\s+$/.exec(rest);
+      if (state.option.trailing && trailWhite) {
+        this.trigger("warning", {
+          code: "W102",
+          line: this.line,
+          character: trailWhite.index + startChar + 2
+        });
+      }
       this.skip(this.input.length); // Skip to the EOL.
       return commentToken("//", rest);
     }
@@ -1337,7 +1345,7 @@ Lexer.prototype = {
       }
 
       if (this.peek() === "") { // EOL
-        if (!/^\s*$/.test(this.getLines()[this.line - 1]) && state.option.trailing) {
+        if (state.option.trailing) {
           this.trigger("warning", { code: "W102", line: this.line, character: start });
         }
       }

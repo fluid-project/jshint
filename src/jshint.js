@@ -108,6 +108,7 @@ var JSHINT = (function () {
       loopfunc    : true, // if functions should be allowed to be defined within
                           // loops
       mootools    : true, // if MooTools globals should be predefined
+      mulopwhite  : true, // if loose whitespace is allowed at multiplicative operators
       multistr    : true, // allow multiline strings
       freeze      : true, // if modifying native object prototypes should be disallowed
       newcap      : true, // if constructor names must be capitalized
@@ -676,6 +677,7 @@ var JSHINT = (function () {
         g = g.split(":");
         var key = (g[0] || "").trim();
         var val = (g[1] || "").trim();
+        val = /([^\s]*)/.exec(val)[1]; // truncate at first whitespace
 
         if (!checkOption(key, nt)) {
           return;
@@ -1084,7 +1086,9 @@ var JSHINT = (function () {
 
       if (left.line === right.line && left.character === right.from) {
         left.from += (left.character - left.from);
-        warning("W013", left, left.value);
+        if (!state.option.mulopwhite || left.value !== "*" && left.value !== "/") {
+          warning("W013", left, left.value);
+        }
       }
     }
   }
@@ -1099,7 +1103,9 @@ var JSHINT = (function () {
       right = right || state.tokens.next;
       if (left.character === right.from) {
         left.from += (left.character - left.from);
-        warning("W013", left, left.value);
+        if (!state.option.mulopwhite || right.value !== "*" && right.value !== "/") {
+          warning("W013", left, left.value);
+        }
       }
     }
   }

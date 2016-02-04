@@ -3378,6 +3378,8 @@ exports["regression test for crash from GH-964"] = function (test) {
   test.done();
 };
 
+// Note - this fix was reverted AMB on 03/02/16 for Fluid version of package.
+// See original report at https://github.com/jshint/jshint/issues/890
 exports["regression test for GH-890"] = function (test) {
   var code = [
     "var a = 1; ",
@@ -3387,6 +3389,7 @@ exports["regression test for GH-890"] = function (test) {
 
   TestRun(test)
     .addError(1, "Trailing whitespace.")
+    .addError(2, "Trailing whitespace.")
     .test(code, { trailing: true });
 
   test.done();

@@ -1219,14 +1219,14 @@ exports.white = function (test) {
     .addError(15, "Missing space after ':'.")
     .addError(18, "Unexpected space after '('.", { character: 9 })
     .addError(18, "Unexpected space after 'ex'.", { character: 12 })
-    .addError(55, "Missing space after ','.") // 2 times?
-    .addError(56, "Missing space after '1'.")
-    .addError(58, "Unexpected space before 'b'.")
-    .addError(58, "Unexpected space after 'a'.")
-    .addError(60, "Unexpected space before 'c'.")
-    .addError(62, "Expected 'var' to have an indentation at 1 instead at 2.")
-    .addError(64, "Unexpected space after 'nodblwarnings'.", { character: 23 })
-    .addError(64, "Unexpected space after '('.", { character: 25 })
+    .addError(59, "Missing space after ','.") // 2 times?
+    .addError(60, "Missing space after '1'.")
+    .addError(62, "Unexpected space before 'b'.")
+    .addError(62, "Unexpected space after 'a'.")
+    .addError(64, "Unexpected space before 'c'.")
+    .addError(66, "Expected 'var' to have an indentation at 1 instead at 2.")
+    .addError(68, "Unexpected space after 'nodblwarnings'.", { character: 23 })
+    .addError(68, "Unexpected space after '('.", { character: 25 })
     .test(src, { es3: true, white: true });
 
   test.done();
@@ -1240,6 +1240,8 @@ exports.trailing = function (test) {
   TestRun(test)
     .addError(8, "Trailing whitespace.", { character: 16 })
     .addError(9, "Trailing whitespace.", { character: 6 })
+    .addError(23, "Trailing whitespace.", { character: 1 })
+    .addError(24, "Trailing whitespace.", { character: 56 })
     .test(src, { es3: true, trailing: true });
 
   test.done();

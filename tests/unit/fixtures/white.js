@@ -19,6 +19,10 @@ try {
     }
 }
 
+// The following line has trailing whitespace on an otherwise blank line
+  
+// This line has trailing whitespace within the comment  
+
 function test2(a, b, c, d) {
   /*jshint indent: 2, white: true, curly: false*/
   if (a) {
@@ -63,4 +67,9 @@ var a,b,
 
 function nodblwarnings ( ) {
     return 1;
+}
+
+function test3() {
+    /*jshint mulopwhite: true*/
+    var x = 3*a + 2*b + 3/c;
 }
